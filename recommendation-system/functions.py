@@ -1,4 +1,5 @@
 import csv
+import math
 import random
 
 import matplotlib.pyplot as plt
@@ -58,3 +59,17 @@ def visualize(matrix):
                 aa[j, i] = 1
     plt.imshow(aa, aspect='auto')
     plt.show()
+
+
+def euclidean_distance_by_person(preferences, person1, person2):
+    sum_of_squares = sum([pow(preferences[person1][i] - preferences[person2][i], 2)
+                          for i in range(preferences[person1].__len__())
+                          if preferences[person1][i] != 99 and preferences[person2][i] != 99])
+
+    return 1 / (1 + math.sqrt(sum_of_squares)) if sum_of_squares > 0 else 0
+
+
+def jaccard_index_by_person(preferences, person1, person2):
+    set1 = set(preferences[person1])
+    set2 = set(preferences[person2])
+    return float(len(set1.intersection(set2))) / float(len(set1.union(set2)))
