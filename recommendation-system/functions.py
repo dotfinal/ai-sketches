@@ -61,7 +61,6 @@ def generate_test_sample(preferences, percent):
     test_size = height * percent
     test = {}
     for i in range(test_size):
-        print i
         user = random.choice(preferences.keys())
         if not user in test:
             test.setdefault(user, {})
@@ -77,9 +76,7 @@ def visualize(matrix):
     width = 100
     aa = np.zeros((width, height))
     for y in matrix:
-        print 'y'
         for x in matrix[y]:
-            print str(x) + ' ' + str(y)
             aa[x, y] = 1
     plt.imshow(aa, aspect='auto')
     plt.show()
@@ -103,7 +100,6 @@ def get_jaccard_index(preferences, vector1, vector2):
 def get_top_matches_for_all_lines(preferences, similarity_function, k=5):
     scores = {}
     for i in preferences:
-        print i
         score = [(similarity_function(preferences, i, other), other)
                  for other in preferences if other != i]
         score.sort()
