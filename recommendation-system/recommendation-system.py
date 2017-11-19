@@ -119,7 +119,7 @@ def calculate_predicted_rate(preferences, item, top):
 def calculate_rmse(sample_data, test_data, scores):
     errors = []
     for i in sample_data:
-        print i
+        print(i)
         top = scores[i]
         errors.extend([pow(test_data[i][j] - calculate_predicted_rate(sample_data, j, top), 2)
                        for j in test_data[i]])
@@ -136,26 +136,26 @@ def get_rmse_for_euclidean_and_jaccard_methods(sample_data, test_data):
 
 
 def test():
-    print 'Loading...'
+    print('Loading...')
     original_data = load_original_data()
     sample_data_user_based = load_sample_data()
     test_data_user_based = load_test_data()
 
-    print 'Done.'
+    print('Done.')
 
     visualize(original_data)
 
-    print 'User-based method:'
+    print('User-based method:')
 
     (euclidean_rmse, jaccard_rmse) = get_rmse_for_euclidean_and_jaccard_methods(
         sample_data_user_based,
         test_data_user_based)
 
-    print 'RMSE using Euclidean method: ' + str(euclidean_rmse)
+    print('RMSE using Euclidean method: ' + str(euclidean_rmse))
 
-    print 'RMSE using Jaccard method: ' + str(jaccard_rmse)
+    print('RMSE using Jaccard method: ' + str(jaccard_rmse))
 
-    print 'Item-based method:'
+    print('Item-based method:')
 
     sample_data_item_based = get_inverted_data(sample_data_user_based)
     test_data_item_based = get_inverted_data(test_data_user_based)
@@ -164,6 +164,6 @@ def test():
         sample_data_item_based,
         test_data_item_based)
 
-    print 'RMSE using Euclidean method: ' + str(euclidean_rmse)
+    print('RMSE using Euclidean method: ' + str(euclidean_rmse))
 
-    print 'RMSE using Jaccard method: ' + str(jaccard_rmse)
+    print('RMSE using Jaccard method: ' + str(jaccard_rmse))
